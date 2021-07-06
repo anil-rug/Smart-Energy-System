@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+# TODO: Cleanup Routes
+# An example controller showing a sample home page
+POST    /AddInfo                                                                controllers.EnergyController.testInsert
+
+POST    /create                                                                 controllers.EnergyController.create
+
+POST    /createFromJson                                                         controllers.EnergyController.createFromJson
+
+GET     /findById/:_id                                                          controllers.EnergyController.findById(_id: String)
+
+# GET   /findByJson                                                             controllers.EnergyController.findByJson
+
+GET     /EnergyConsumptionStream                                                controllers.EnergyController.getEnergyConsumptionStream
+
+GET     /energyConsumptionRT/:id                                                controllers.EnergyController.energyConsumptionRT(id: Int)
+
+GET     /EnergyConsumptionWS/:id                                                controllers.EnergyController.energyConsumptionWS(id: Int)
+
+# USER CONTROLLER ROUTES
+
+POST    /userAuth/:userName/:password                                           controllers.UserController.authenticateLogin(userName: String, password: String)
+
+POST    /addUser/:userName/:password                                            controllers.UserController.createNewUser(userName: String, password: String)
+
+POST    /deleteUser/:userName                                                   controllers.UserController.deleteUser(userName: String)
+
+POST    /updateUser/:userName/:password/:newUserName/:newPassword                controllers.UserController.updateUser(userName: String, password: String, newUserName: String, newPassword: String)

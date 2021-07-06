@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>groupId</groupId>
+    <artifactId>2019_group_30_s4151968_s4056167_s3922782</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <play2.version>2.2.1</play2.version>
+        <play2-scala.version>2.10</play2-scala.version>
+        <play2.plugin.version>1.0.0-alpha5</play2.plugin.version>
+        <scala.version>2.10.2</scala.version>
+    </properties>
+    <modules>
+        <module>front-end</module>
+        <module>back-end</module>
+    </modules>
+    <repositories>
+        <repository>
+            <id>typesafe</id>
+            <name>Typesafe - releases</name>
+            <url>http://repo.typesafe.com/typesafe/releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play_${play2-scala.version}</artifactId>
+            <version>${play2.version}</version>
+        </dependency>
+        <!-- only if using Java -->
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-java_${play2-scala.version}</artifactId>
+            <version>${play2.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.typesafe.play/play -->
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play_2.13</artifactId>
+            <version>2.8.0-M5</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <sourceDirectory>${basedir}/app</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/conf</directory>
+            </resource>
+            <resource>
+                <directory>${basedir}</directory>
+                <includes>
+                    <include>public/**</include>
+                </includes>
+            </resource>
+        </resources>
+        <!--<outputDirectory>target/scala-${play2-scala.version}/classes</outputDirectory>-->
+        <plugins>
+            <plugin>
+                <groupId>com.google.code.play2-maven-plugin</groupId>
+                <artifactId>play2-maven-plugin</artifactId>
+                <version>${play2.plugin.version}</version>
+                <extensions>true</extensions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.code.play2-maven-plugin</groupId>
+                        <artifactId>play2-provider-play22</artifactId>
+                        <version>${play2.plugin.version}</version>
+                    </dependency>
+                </dependencies>
+                <!-- only if using Java -->
+                <configuration>
+                    <mainLang>java</mainLang>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
